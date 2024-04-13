@@ -5,6 +5,9 @@ const { verifyToken } = require("./verifyToken");
 
 const router = require("express").Router();
 
+const noLogo =
+  "https://res.cloudinary.com/midefulness/image/upload/v1713019229/SkillGate/NoLogo/no-logo-removebg-preview_r3ipnp.png";
+
 //SKILLS
 //Get Array of Skills
 router.post("/skills", verifyToken, async (req, res) => {
@@ -51,7 +54,7 @@ router.post("/company", verifyToken, async (req, res) => {
         const requiredCompanyLogo = companyImage(comLogo);
         return requiredCompanyLogo
           ? requiredCompanyLogo
-          : { name: comLogo, value: "None" };
+          : { name: comLogo, value: noLogo };
       })
     );
 
@@ -70,7 +73,8 @@ router.get("/company/:companyName", verifyToken, async (req, res) => {
     if (comapanyLogo) {
       res.status(200).json(comapanyLogo);
     } else {
-      res.status(404).json({ message: "Company logo not found" });
+      res.status(200).json({ name: companyName, value: noLogo });
+      // res.status(404).json({ message: "Company logo not found" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -88,7 +92,7 @@ router.post("/educations", verifyToken, async (req, res) => {
         const requiredEducation = educationImage(education);
         return requiredEducation
           ? requiredEducation
-          : { name: education, value: "None" };
+          : { name: education, value: noLogo };
       })
     );
 
@@ -107,7 +111,8 @@ router.get("/education/:educationName", verifyToken, async (req, res) => {
     if (educationLogo) {
       res.status(200).json(educationLogo);
     } else {
-      res.status(404).json({ message: "Education logo not found" });
+      res.status(200).json({ name: educationName, value: noLogo });
+      // res.status(404).json({ message: "Education logo not found" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
