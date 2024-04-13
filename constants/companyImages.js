@@ -18,7 +18,7 @@ const x99 =
   "https://res.cloudinary.com/dsqosc2ig/image/upload/v1700645059/SkillGate/99x-logo.png";
 
 const companyImage = (comapany) => {
-  const comapanyID = comapany.toLowerCase();
+  const comapanyID = comapany.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '');
   switch (comapanyID) {
     case "google":
       return { name: "google", value: google };

@@ -161,7 +161,7 @@ const canva =
   "https://res.cloudinary.com/midefulness/image/upload/v1711895164/SkillGate/skills/canva_pa2ero.svg";
 
 const skillsImage = (skill) => {
-  const skillID = skill.toLowerCase();
+  const skillID = skill.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '');
   switch (skillID) {
     case "gcp":
       return { name: "gcp", value: gcp };
