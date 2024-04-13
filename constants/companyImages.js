@@ -16,9 +16,14 @@ const wealthos =
   "https://res.cloudinary.com/dsqosc2ig/image/upload/v1700645454/SkillGate/wealthos-logo.png";
 const x99 =
   "https://res.cloudinary.com/dsqosc2ig/image/upload/v1700645059/SkillGate/99x-logo.png";
+const madMobile =
+  "https://res.cloudinary.com/midefulness/image/upload/v1713021490/SkillGate/CompanyLogo/madmobile-removebg-preview_bppgcq.png";
 
 const companyImage = (comapany) => {
-  const comapanyID = comapany.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '');
+  const comapanyID = comapany
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, "")
+    .replace(/\s+/g, "");
   switch (comapanyID) {
     case "google":
       return { name: "google", value: google };
@@ -38,6 +43,8 @@ const companyImage = (comapany) => {
       return { name: "wealthOS", value: wealthos };
     case "99x":
       return { name: "99x", value: x99 };
+    case "madmobile":
+      return { name: "madMobile", value: madMobile };
     default:
       return null;
   }
